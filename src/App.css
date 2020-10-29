@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: grid;
+  background-color: #282c34;
+  height: 100vh;
+}
+
+.wrapper {
+  justify-self: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin: 25px 10px;
+  height: 600px;
+  border-radius: 5px;
+  background: wheat;
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+.wrapper header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #181717;
+  min-height: 40px;
+  color: grey;
+}
+
+.wrapper main {
+  background: #282535;
+  flex: auto;
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.wrapper main::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.wrapper main::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+.wrapper main::-webkit-scrollbar-thumb {
+  background: #6649b8;
+}
+
+.wrapper form {
+  display: flex;
+  background: #181717;
+  height: 50px;
+}
+
+
+.wrapper form input{
+  flex: 7;
+  background: #181717;
+  padding: 15px;
+  border: none;
+  outline: none;
+  color: #fffff8;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.wrapper form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  cursor: pointer;
+  background: #2b2f71;
+  border: none;
+  outline: none;
+}
+
+.wrapper form button:hover {
+  opacity: .5;
+}
+
+.wrapper form button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+
+.wrapper form button img {
+  width: 40%;
+  height: 50%;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+
+.right {
+  flex-direction: row-reverse;
+}
+
+.right img {
+  margin: 0 0 0 10px;
+}
+
+.left img {
+  margin: 0 10px 0 0;
+}
+
+.message img {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.burbuja {
+  width: 350px;
+  padding: 15px;
+  border-radius: 15px;
+  background: cadetblue;
+}
+
+.infoMensaje {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px 0;
+}
+
+.infoNombre {
+  font-weight: bold;
+}
+
+.infoHora {
+  font-weight: lighter;
+}
