@@ -14,13 +14,18 @@ function App() {
 
 //Componente del chat
 function ChatRoom(){
-  const date = new Date()
-  const tiempo = `${date.getHours()}:${date.getMinutes()}`
+
+  function formatearFecha(fecha){
+    const hora = '0' + fecha.getHours()
+    const minutos = '0' + fecha.getMinutes()
+
+    return `${hora.slice(-2)}:${minutos.slice(-2)}`
+  }
 
   // Funcion para agregar el mensaje al chat
-    function appendMessage(mensaje, lado, tiempo, nombre) {
+    function appendMessage(mensaje, lado, nombre) {
     const main = document.querySelector('.principal')
-    const msg = renderToString(<ChatMessage text={mensaje} side={lado} time={tiempo} name={nombre}/>)
+    const msg = renderToString(<ChatMessage text={mensaje} side={lado} time={formatearFecha(new Date())} name={nombre}/>)
 
     main.insertAdjacentHTML('beforeend', msg)
     main.scrollTop += 500
@@ -34,13 +39,13 @@ function ChatRoom(){
 
     if (!resUsuario) return
 
-    appendMessage(resUsuario, 'right', tiempo, 'Usuario')
+    appendMessage(resUsuario, 'right', 'Usuario')
     document.querySelector('.input').value = ''
 
     await $.get("/prueba", {msg: resUsuario}).done(data => {
       if(!data) return
       console.log(data)
-      appendMessage(data, 'left', tiempo, 'WindowsBot')
+      appendMessage(data, 'left', 'WindowsBot')
     })
   }
   
