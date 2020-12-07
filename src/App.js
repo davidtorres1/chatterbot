@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { renderToString } from 'react-dom/server'
 import './App.css';
 import $ from "jquery"
@@ -23,7 +23,7 @@ function ChatRoom(){
   }
 
   // Funcion para agregar el mensaje al chat
-    function appendMessage(mensaje, lado, nombre) {
+  function appendMessage(mensaje, lado, nombre) {
     const main = document.querySelector('.principal')
     const msg = renderToString(<ChatMessage text={mensaje} side={lado} time={formatearFecha(new Date())} name={nombre}/>)
 
@@ -45,7 +45,7 @@ function ChatRoom(){
     await $.get("/prueba", {msg: resUsuario}).done(data => {
       if(!data) return
       console.log(data)
-      appendMessage(data, 'left', 'WindowsBot')
+      setTimeout(() => appendMessage(data, 'left', 'WindowsBot'), 1000)
     })
   }
   
@@ -57,6 +57,7 @@ function ChatRoom(){
       </h1>
     </header>
       <main className="principal"> 
+        <ChatMessage text="Que tal, que problema tienes con tu computadora?, si no resuelvo tu problema escribe: Necesito ayuda" side="left" time={formatearFecha(new Date())} name="WindowsBot"/>
       </main>
       <form onSubmit={receiveMessage}>
         <input className="input" placeholder="Preguntale algo al asistente..."/>
@@ -68,16 +69,16 @@ function ChatRoom(){
 
 
 // Componente del mensaje
-function ChatMessage(props){
+function ChatMessage({ text, side, time, name }){
   return(
-    <div className={`message ${props.side}`}>
+    <div className={`message ${ side }`}>
       <img src='/logo192.png'/>
       <div className="burbuja">
         <div className="infoMensaje">
-        <div className="infoNombre">{props.name}</div>
-        <div className="infoHora">{props.time}</div>
+          <div className="infoNombre">{ name }</div>
+          <div className="infoHora">{ time }</div>
         </div>
-    <div className="textoMensaje">{props.text}</div>
+        <div className="textoMensaje">{ text }</div>
       </div>
     </div>
   )

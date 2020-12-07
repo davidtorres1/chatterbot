@@ -145,3 +145,8 @@
 .infoHora {
   font-weight: lighter;
 }
+
+.textoMensaje {
+  text-align: justify;
+  overflow-wrap: break-word;
+}
